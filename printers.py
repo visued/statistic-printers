@@ -31,4 +31,10 @@ def getCounterLexE360(ip):
     return int(table[5].get_text().replace('= ', ''))
 
 
-
+def getCounterRicoh(ip):
+    http = urllib3.PoolManager()
+    url = 'http://' + ip + '/web/guest/pt/websys/status/getUnificationCounter.cgi'
+    response = http.request('GET', url)
+    soup = BeautifulSoup(response.data, "html.parser")
+    table = soup.find_all('tr', {'class': 'staticProp'})
+    return int(table[1].get_text().replace('Total:', ''))
