@@ -61,3 +61,21 @@ def getCounterM401dw(ip):
     soup = BeautifulSoup(response.data, "html.parser")
     table = soup.find_all('td', {'class': 'itemFont'})
     return table[33].get_text()
+
+def getCounterM1536dnf(ip):
+    http = urllib3.PoolManager()
+    url = 'http://' + ip + '/info_configuration.html?tab=Home&menu=DevConfig'
+    response = http.request('GET', url)
+    soup = BeautifulSoup(response.data, "html.parser")
+    table = soup.find_all('td', {'class': 'itemFont'})
+    return table[32].get_text()
+
+def getCounterM425dn(ip):
+    http = urllib3.PoolManager()
+    url = 'http://' + ip + '/info_configuration.html?tab=Home&menu=DevConfig'
+    response = http.request('GET', url)
+    soup = BeautifulSoup(response.data, "html.parser")
+    table = soup.find_all('td', {'class': 'itemFont'})
+    return table[34].get_text()            
+
+print (getCounterM425dn('172.16.7.102'))
