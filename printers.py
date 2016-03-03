@@ -44,4 +44,20 @@ def getCounterRicohOld(ip):
     response = http.request('GET', url)
     soup = BeautifulSoup(response.data, "html.parser")
     table = soup.find_all('tr', {'class': 'staticProp'})
-    print (table[2].get_text().replace('Páginas impressas','').replace(':',''))
+    return table[2].get_text().replace('Páginas impressas','').replace(':','')
+
+def getCounterM401dne(ip):
+    http = urllib3.PoolManager()
+    url = 'http://' + ip + '/info_configuration.html?tab=Home&menu=DevConfig'
+    response = http.request('GET', url)
+    soup = BeautifulSoup(response.data, "html.parser")
+    table = soup.find_all('td', {'class': 'itemFont'})
+    return table[30].get_text()
+
+def getCounterM401dw(ip):
+    http = urllib3.PoolManager()
+    url = 'http://' + ip + '/info_configuration.html?tab=Home&menu=DevConfig'
+    response = http.request('GET', url)
+    soup = BeautifulSoup(response.data, "html.parser")
+    table = soup.find_all('td', {'class': 'itemFont'})
+    return table[33].get_text()
