@@ -30,7 +30,6 @@ def getCounterLexE360(ip):
     table = soup.find_all('td')
     return int(table[5].get_text().replace('= ', ''))
 
-
 def getCounterRicohNew(ip):
     http = urllib3.PoolManager()
     url = 'http://' + ip + '/web/guest/pt/websys/status/getUnificationCounter.cgi'
