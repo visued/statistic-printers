@@ -76,6 +76,4 @@ def getCounterM425dn(ip):
     response = http.request('GET', url)
     soup = BeautifulSoup(response.data, "html.parser")
     table = soup.find_all('td', {'class': 'itemFont'})
-    return table[34].get_text()            
-
-print (getCounterM425dn('172.16.7.102'))
+    return table[34].get_text()
